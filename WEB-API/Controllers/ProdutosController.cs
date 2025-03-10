@@ -3,41 +3,58 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using WEB_API.Models;
-using Xunit.Sdk;
+using WEB_API.Services;
+using WEB_API.Utils;
 
 namespace WEB_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class ProdutosController : ControllerBase
+    public class ProdutosController(ProdutosUsuariosContext context, ILogger<ProdutosController> logger, ILogErroService logErroService) : ControllerBase
     {
-        private readonly ProdutosUsuariosContext _context;
+        private readonly ProdutosUsuariosContext _context = context;
+        private readonly ILogger<ProdutosController> _logger = logger;
+        private readonly ILogErroService _logErroService = logErroService;
 
-        public ProdutosController(ProdutosUsuariosContext context)
-        {
-            _context = context;
-        }
 
         // GET: api/Produtos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Produto>>> GetProdutos()
         {
-            return await _context.Produtos.ToListAsync();
+            try
+            {
+                return await _context.Produtos.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, Constantes.ErroListaProdutos);
+                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
+                return StatusCode(500, Constantes.ErroInternoRequisicao);
+            }
         }
 
         // GET: api/Produtos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Produto>> GetProduto(int id)
         {
-            var produto = await _context.Produtos.FindAsync(id);
-
-            if (produto == null)
+            try
             {
-                return NotFound();
-            }
+                var produto = await _context.Produtos.FindAsync(id);
 
-            return produto;
+                if (produto == null)
+                {
+                    return NotFound();
+                }
+
+                return produto;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, Funcoes.ObterMensagemErroObterProduto(id), id);
+                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
+                return StatusCode(500, Constantes.ErroInternoRequisicao);
+            }
         }
 
         // POST: api/Produtos
@@ -57,16 +74,24 @@ namespace WEB_API.Controllers
                     imagemBytes = Convert.FromBase64String(request.Imagem);
                 }
 
-                var produto = Produto.CriarNovoProduto(request.Nome ?? "Produto sem Nome", request.Preco, imagemBytes);
+                var produto = Produto.CriarNovoProduto(request.Nome ?? Constantes.ErroProdutoSemNome, request.Preco, imagemBytes);
 
                 _context.Produtos.Add(produto);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("GetProduto", new { id = produto.Id }, produto);
+                return CreatedAtAction(Constantes.GetProduto, new { id = produto.Id }, produto);
             }
             catch (ArgumentException ex)
             {
+                _logger.LogError(ex, Constantes.ErroCriarNovoProduto);
+                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
                 return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, Constantes.ErroCriarNovoProduto);
+                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
+                return StatusCode(500, Constantes.ErroInternoRequisicao);
             }
         }
 
@@ -81,7 +106,7 @@ namespace WEB_API.Controllers
 
             if (id != request.Id)
             {
-                return BadRequest("O ID do produto na rota não corresponde ao ID no corpo da requisição.");
+                return BadRequest(Constantes.ErroIdRotaDiferenteCorpo);
             }
 
             try
@@ -98,7 +123,7 @@ namespace WEB_API.Controllers
                     imagemBytes = Convert.FromBase64String(request.Imagem);
                 }
 
-                var produtoAtualizado = Produto.CriarProdutoExistente(id, request.Nome ?? "Produto sem Nome", request.Preco, imagemBytes);
+                var produtoAtualizado = Produto.CriarProdutoExistente(id, request.Nome ?? Constantes.ErroProdutoSemNome, request.Preco, imagemBytes);
 
                 _context.Entry(produtoExistente).CurrentValues.SetValues(produtoAtualizado);
                 _context.Entry(produtoExistente).State = EntityState.Modified;
@@ -107,6 +132,8 @@ namespace WEB_API.Controllers
             }
             catch (ArgumentException ex)
             {
+                _logger.LogError(ex, Funcoes.ObterMensagemErroAtualizarProduto(id));
+                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
                 return BadRequest(ex.Message);
             }
             catch (DbUpdateConcurrencyException)
@@ -120,6 +147,12 @@ namespace WEB_API.Controllers
                     throw;
                 }
             }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, Funcoes.ObterMensagemErroAtualizarProduto(id));
+                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
+                return StatusCode(500, Constantes.ErroInternoRequisicao);
+            }
 
             return NoContent();
         }
@@ -128,16 +161,25 @@ namespace WEB_API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduto(int id)
         {
-            var produto = await _context.Produtos.FindAsync(id);
-            if (produto == null)
+            try
             {
-                return NotFound();
+                var produto = await _context.Produtos.FindAsync(id);
+                if (produto == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Produtos.Remove(produto);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
             }
-
-            _context.Produtos.Remove(produto);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, Funcoes.ObterMensagemErroDeletarProduto(id));
+                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
+                return StatusCode(500, Constantes.ErroInternoRequisicao);
+            }
         }
 
         private bool ProdutoExists(int id)
@@ -145,18 +187,32 @@ namespace WEB_API.Controllers
             return _context.Produtos.Any(e => e.Id == id);
         }
 
+        private async Task<string> ObterCorpoRequisicao()
+        {
+            if (Request.ContentLength > 0)
+            {
+                Request.EnableBuffering();
+                Request.Body.Position = 0;
+                using var reader = new System.IO.StreamReader(Request.Body);
+                var corpoRequisicao = await reader.ReadToEndAsync();
+                Request.Body.Position = 0;
+                return corpoRequisicao;
+            }
+            return string.Empty;
+        }
+
         public class ProdutoRequest
         {
             public int Id { get; set; }
 
-            [Required(ErrorMessage = "O nome do produto é obrigatório.")]
-            [StringLength(255, MinimumLength = 3, ErrorMessage = "O nome do produto deve ter pelo menos 3 caracteres.")]
+            [Required(ErrorMessage = Constantes.ErroNomeProdutoObrigatorio)]
+            [StringLength(255, MinimumLength = 3, ErrorMessage = Constantes.ErroNomeProduto3Caracteres)]
             public string? Nome { get; set; }
 
-            [Range(0.50, double.MaxValue, ErrorMessage = "O preço do produto não pode ser inferior a 0,50.")]
+            [Range(0.50, double.MaxValue, ErrorMessage = Constantes.ErroPrecoMinimoProduto)]
             public double Preco { get; set; }
 
-            public string? Imagem { get; set; } // Adicionado
+            public string? Imagem { get; set; }
         }
     }
 }

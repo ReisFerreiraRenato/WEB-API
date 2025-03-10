@@ -1,0 +1,240 @@
+2025-03-10 16:47:29.972 -03:00 [INF] User profile is available. Using 'C:\Users\Renato\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-10 16:47:30.239 -03:00 [INF] Now listening on: https://localhost:7127
+2025-03-10 16:47:30.242 -03:00 [INF] Now listening on: http://localhost:5120
+2025-03-10 16:47:30.410 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-10 16:47:30.412 -03:00 [INF] Hosting environment: Development
+2025-03-10 16:47:30.413 -03:00 [INF] Content root path: D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API
+2025-03-10 16:47:30.934 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7127/weatherforecast - null null
+2025-03-10 16:47:32.487 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-10 16:47:32.506 -03:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[WEB_API.WeatherForecast] Get() on controller WEB_API.Controllers.WeatherForecastController (WEB-API).
+2025-03-10 16:47:32.521 -03:00 [INF] Executing ObjectResult, writing value of type 'WEB_API.WeatherForecast[]'.
+2025-03-10 16:47:32.553 -03:00 [INF] Executed action WEB_API.Controllers.WeatherForecastController.Get (WEB-API) in 39.2423ms
+2025-03-10 16:47:32.557 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-10 16:47:32.561 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7127/weatherforecast - 200 null application/json; charset=utf-8 1639.5978ms
+2025-03-10 19:03:31.698 -03:00 [INF] User profile is available. Using 'C:\Users\Renato\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-10 19:03:31.856 -03:00 [FTL] Application startup exception
+System.InvalidOperationException: Cannot resolve scoped service 'WEB_API.Services.ILogErroService' from root provider.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-03-10 19:03:31.889 -03:00 [ERR] Hosting failed to start
+System.InvalidOperationException: Cannot resolve scoped service 'WEB_API.Services.ILogErroService' from root provider.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-03-10 19:10:14.847 -03:00 [INF] User profile is available. Using 'C:\Users\Renato\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-10 19:10:15.038 -03:00 [FTL] Application startup exception
+System.InvalidOperationException: Cannot resolve scoped service 'WEB_API.Services.ILogErroService' from root provider.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-03-10 19:10:15.082 -03:00 [ERR] Hosting failed to start
+System.InvalidOperationException: Cannot resolve scoped service 'WEB_API.Services.ILogErroService' from root provider.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-03-10 19:11:31.738 -03:00 [INF] User profile is available. Using 'C:\Users\Renato\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-10 19:11:31.878 -03:00 [FTL] Application startup exception
+System.InvalidOperationException: Cannot resolve scoped service 'WEB_API.Services.ILogErroService' from root provider.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-03-10 19:11:31.910 -03:00 [ERR] Hosting failed to start
+System.InvalidOperationException: Cannot resolve scoped service 'WEB_API.Services.ILogErroService' from root provider.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-03-10 19:55:56.669 -03:00 [INF] User profile is available. Using 'C:\Users\Renato\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-10 19:55:56.789 -03:00 [FTL] Application startup exception
+System.InvalidOperationException: Cannot resolve scoped service 'WEB_API.Services.ILogErroService' from root provider.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-03-10 19:55:56.826 -03:00 [ERR] Hosting failed to start
+System.InvalidOperationException: Cannot resolve scoped service 'WEB_API.Services.ILogErroService' from root provider.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-03-10 19:56:31.972 -03:00 [INF] User profile is available. Using 'C:\Users\Renato\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-10 19:56:32.165 -03:00 [FTL] Application startup exception
+System.InvalidOperationException: Cannot resolve scoped service 'WEB_API.Services.ILogErroService' from root provider.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2025-03-10 19:56:32.215 -03:00 [ERR] Hosting failed to start
+System.InvalidOperationException: Cannot resolve scoped service 'WEB_API.Services.ILogErroService' from root provider.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateResolution(ServiceCallSite callSite, IServiceScope scope, IServiceScope rootScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.OnResolve(ServiceCallSite callSite, IServiceScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-03-10 19:56:58.494 -03:00 [INF] User profile is available. Using 'C:\Users\Renato\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-10 19:56:58.825 -03:00 [INF] Now listening on: https://localhost:7127
+2025-03-10 19:56:58.829 -03:00 [INF] Now listening on: http://localhost:5120
+2025-03-10 19:56:58.957 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-10 19:56:58.962 -03:00 [INF] Hosting environment: Development
+2025-03-10 19:56:58.964 -03:00 [INF] Content root path: D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API
+2025-03-10 19:56:59.862 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7127/weatherforecast - null null
+2025-03-10 19:57:01.447 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-10 19:57:01.468 -03:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[WEB_API.WeatherForecast] Get() on controller WEB_API.Controllers.WeatherForecastController (WEB-API).
+2025-03-10 19:57:01.479 -03:00 [INF] Executing ObjectResult, writing value of type 'WEB_API.WeatherForecast[]'.
+2025-03-10 19:57:01.509 -03:00 [INF] Executed action WEB_API.Controllers.WeatherForecastController.Get (WEB-API) in 32.3875ms
+2025-03-10 19:57:01.513 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-10 19:57:01.520 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7127/weatherforecast - 200 null application/json; charset=utf-8 1668.2625ms
+2025-03-10 19:57:57.413 -03:00 [INF] User profile is available. Using 'C:\Users\Renato\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-10 19:57:57.729 -03:00 [INF] Now listening on: https://localhost:7127
+2025-03-10 19:57:57.731 -03:00 [INF] Now listening on: http://localhost:5120
+2025-03-10 19:57:57.865 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-10 19:57:57.868 -03:00 [INF] Hosting environment: Development
+2025-03-10 19:57:57.869 -03:00 [INF] Content root path: D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API
+2025-03-10 19:58:01.359 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7127/weatherforecast - null null
+2025-03-10 19:58:01.580 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-10 19:58:01.601 -03:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[WEB_API.WeatherForecast] Get() on controller WEB_API.Controllers.WeatherForecastController (WEB-API).
+2025-03-10 19:58:01.614 -03:00 [INF] Executing ObjectResult, writing value of type 'WEB_API.WeatherForecast[]'.
+2025-03-10 19:58:01.642 -03:00 [INF] Executed action WEB_API.Controllers.WeatherForecastController.Get (WEB-API) in 34.7329ms
+2025-03-10 19:58:01.646 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-10 19:58:01.652 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7127/weatherforecast - 200 null application/json; charset=utf-8 303.8245ms
+2025-03-10 20:00:35.491 -03:00 [INF] User profile is available. Using 'C:\Users\Renato\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-10 20:00:35.843 -03:00 [INF] Now listening on: https://localhost:7127
+2025-03-10 20:00:35.846 -03:00 [INF] Now listening on: http://localhost:5120
+2025-03-10 20:00:35.938 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-10 20:00:35.940 -03:00 [INF] Hosting environment: Development
+2025-03-10 20:00:35.942 -03:00 [INF] Content root path: D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API
+2025-03-10 20:00:36.912 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7127/weatherforecast - null null
+2025-03-10 20:00:37.144 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-10 20:00:37.167 -03:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[WEB_API.WeatherForecast] Get() on controller WEB_API.Controllers.WeatherForecastController (WEB-API).
+2025-03-10 20:00:37.178 -03:00 [INF] Executing ObjectResult, writing value of type 'WEB_API.WeatherForecast[]'.
+2025-03-10 20:00:37.208 -03:00 [INF] Executed action WEB_API.Controllers.WeatherForecastController.Get (WEB-API) in 35.3479ms
+2025-03-10 20:00:37.212 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-10 20:00:37.218 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7127/weatherforecast - 200 null application/json; charset=utf-8 319.9252ms
+2025-03-10 20:01:36.330 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7127/api/produtos - null null
+2025-03-10 20:01:36.478 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.ProdutosController.GetProdutos (WEB-API)'
+2025-03-10 20:01:36.487 -03:00 [INF] Route matched with {action = "GetProdutos", controller = "Produtos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WEB_API.Models.Produto]]] GetProdutos() on controller WEB_API.Controllers.ProdutosController (WEB-API).
+2025-03-10 20:01:39.271 -03:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Imagem], [p].[Nome], [p].[Preco]
+FROM [Produtos] AS [p]
+2025-03-10 20:01:39.370 -03:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[WEB_API.Models.Produto, WEB-API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-10 20:01:39.398 -03:00 [INF] Executed action WEB_API.Controllers.ProdutosController.GetProdutos (WEB-API) in 2907.2741ms
+2025-03-10 20:01:39.401 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.ProdutosController.GetProdutos (WEB-API)'
+2025-03-10 20:01:39.413 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7127/api/produtos - 200 null application/json; charset=utf-8 3083.1752ms
+2025-03-10 20:01:45.239 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7127/api/produtos/1 - null null
+2025-03-10 20:01:45.252 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.ProdutosController.GetProduto (WEB-API)'
+2025-03-10 20:01:45.265 -03:00 [INF] Route matched with {action = "GetProduto", controller = "Produtos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WEB_API.Models.Produto]] GetProduto(Int32) on controller WEB_API.Controllers.ProdutosController (WEB-API).
+2025-03-10 20:01:45.592 -03:00 [INF] Executed DbCommand (161ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Imagem], [p].[Nome], [p].[Preco]
+FROM [Produtos] AS [p]
+WHERE [p].[Id] = @__p_0
+2025-03-10 20:01:45.608 -03:00 [INF] Executing ObjectResult, writing value of type 'WEB_API.Models.Produto'.
+2025-03-10 20:01:45.612 -03:00 [INF] Executed action WEB_API.Controllers.ProdutosController.GetProduto (WEB-API) in 342.3864ms
+2025-03-10 20:01:45.621 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.ProdutosController.GetProduto (WEB-API)'
+2025-03-10 20:01:45.624 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7127/api/produtos/1 - 200 null application/json; charset=utf-8 384.8395ms
+2025-03-10 20:01:49.366 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7127/api/produtos/2 - null null
+2025-03-10 20:01:49.373 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.ProdutosController.GetProduto (WEB-API)'
+2025-03-10 20:01:49.375 -03:00 [INF] Route matched with {action = "GetProduto", controller = "Produtos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WEB_API.Models.Produto]] GetProduto(Int32) on controller WEB_API.Controllers.ProdutosController (WEB-API).
+2025-03-10 20:01:49.561 -03:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Imagem], [p].[Nome], [p].[Preco]
+FROM [Produtos] AS [p]
+WHERE [p].[Id] = @__p_0
+2025-03-10 20:01:49.566 -03:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-03-10 20:01:49.611 -03:00 [INF] Executed action WEB_API.Controllers.ProdutosController.GetProduto (WEB-API) in 232.5644ms
+2025-03-10 20:01:49.615 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.ProdutosController.GetProduto (WEB-API)'
+2025-03-10 20:01:49.621 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7127/api/produtos/2 - 404 null application/problem+json; charset=utf-8 255.4786ms
+2025-03-10 20:02:04.407 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7127/api/produtos/10 - null null
+2025-03-10 20:02:04.411 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.ProdutosController.GetProduto (WEB-API)'
+2025-03-10 20:02:04.412 -03:00 [INF] Route matched with {action = "GetProduto", controller = "Produtos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WEB_API.Models.Produto]] GetProduto(Int32) on controller WEB_API.Controllers.ProdutosController (WEB-API).
+2025-03-10 20:02:04.425 -03:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Imagem], [p].[Nome], [p].[Preco]
+FROM [Produtos] AS [p]
+WHERE [p].[Id] = @__p_0
+2025-03-10 20:02:04.429 -03:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-03-10 20:02:04.430 -03:00 [INF] Executed action WEB_API.Controllers.ProdutosController.GetProduto (WEB-API) in 15.6141ms
+2025-03-10 20:02:04.432 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.ProdutosController.GetProduto (WEB-API)'
+2025-03-10 20:02:04.436 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7127/api/produtos/10 - 404 null application/problem+json; charset=utf-8 29.2406ms
+2025-03-10 20:02:12.672 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7127/api/produtos - null null
+2025-03-10 20:02:12.677 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.ProdutosController.GetProdutos (WEB-API)'
+2025-03-10 20:02:12.679 -03:00 [INF] Route matched with {action = "GetProdutos", controller = "Produtos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[WEB_API.Models.Produto]]] GetProdutos() on controller WEB_API.Controllers.ProdutosController (WEB-API).
+2025-03-10 20:02:12.686 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Imagem], [p].[Nome], [p].[Preco]
+FROM [Produtos] AS [p]
+2025-03-10 20:02:12.689 -03:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[WEB_API.Models.Produto, WEB-API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-10 20:02:12.692 -03:00 [INF] Executed action WEB_API.Controllers.ProdutosController.GetProdutos (WEB-API) in 8.8733ms
+2025-03-10 20:02:12.694 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.ProdutosController.GetProdutos (WEB-API)'
+2025-03-10 20:02:12.696 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7127/api/produtos - 200 null application/json; charset=utf-8 24.107ms

@@ -34,9 +34,13 @@ D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.EntityFra
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
@@ -61,6 +65,15 @@ D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.VisualStu
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Mono.TextTemplating.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Serilog.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Serilog.AspNetCore.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Serilog.Sinks.File.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -237,6 +250,7 @@ D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\obj\Debug\net8.0\WEB-API.AssemblyInf
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\obj\Debug\net8.0\WEB-API.csproj.CoreCompileInputs.cache
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\obj\Debug\net8.0\WEB-API.MvcApplicationPartsAssemblyInfo.cs
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\obj\Debug\net8.0\WEB-API.MvcApplicationPartsAssemblyInfo.cache
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\obj\Debug\net8.0\WEB-API.sourcelink.json
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\obj\Debug\net8.0\scopedcss\bundle\WEB-API.styles.css
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\obj\Debug\net8.0\staticwebassets.build.json
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API\obj\Debug\net8.0\staticwebassets.development.json
