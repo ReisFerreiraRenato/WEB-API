@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tMBjGQMMkwo=",
+  "dgSpecHash": "0lNG3h1RmcQ=",
   "success": true,
   "projectFilePath": "D:\\Projetos\\APS.NET\\WEB API\\WEB-API\\WEB_API.Tests\\WEB_API.Tests.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Renato\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
+    "C:\\Users\\Renato\\.nuget\\packages\\fluentassertions\\8.1.1\\fluentassertions.8.1.1.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.13\\microsoft.aspnetcore.authentication.jwtbearer.8.0.13.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\microsoft.codecoverage\\17.13.0\\microsoft.codecoverage.17.13.0.nupkg.sha512",

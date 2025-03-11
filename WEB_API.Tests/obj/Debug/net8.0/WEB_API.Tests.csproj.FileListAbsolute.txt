@@ -18,6 +18,7 @@ D:\Projetos\APS.NET\WEB API\WEB-API\WEB_API.Tests\bin\Debug\net8.0\Azure.Core.dl
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB_API.Tests\bin\Debug\net8.0\Azure.Identity.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB_API.Tests\bin\Debug\net8.0\BCrypt.Net-Next.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB_API.Tests\bin\Debug\net8.0\Castle.Core.dll
+D:\Projetos\APS.NET\WEB API\WEB-API\WEB_API.Tests\bin\Debug\net8.0\FluentAssertions.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB_API.Tests\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB_API.Tests\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Projetos\APS.NET\WEB API\WEB-API\WEB_API.Tests\bin\Debug\net8.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll

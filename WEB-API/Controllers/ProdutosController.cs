@@ -17,7 +17,6 @@ namespace WEB_API.Controllers
         private readonly ILogger<ProdutosController> _logger = logger;
         private readonly ILogErroService _logErroService = logErroService;
 
-
         // GET: api/Produtos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Produto>>> GetProdutos()
@@ -28,9 +27,7 @@ namespace WEB_API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, Constantes.ErroListaProdutos);
-                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
-                return StatusCode(500, Constantes.ErroInternoRequisicao);
+                return await HandleGenericError(ex, Constantes.ErroListaProdutos);
             }
         }
 
@@ -40,20 +37,23 @@ namespace WEB_API.Controllers
         {
             try
             {
+                if (id == 0)
+                {
+                    return await HandleProdutoNaoEncontrado(id);
+                }
+
                 var produto = await _context.Produtos.FindAsync(id);
 
                 if (produto == null)
                 {
-                    return NotFound();
+                    return await HandleProdutoNaoEncontrado(id);
                 }
 
                 return produto;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, Funcoes.ObterMensagemErroObterProduto(id), id);
-                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
-                return StatusCode(500, Constantes.ErroInternoRequisicao);
+                return await HandleGenericError(ex, Funcoes.ObterMensagemErroObterProduto(id), id);
             }
         }
 
@@ -68,12 +68,7 @@ namespace WEB_API.Controllers
 
             try
             {
-                var imagemBytes = Array.Empty<byte>();
-                if (!string.IsNullOrEmpty(request.Imagem))
-                {
-                    imagemBytes = Convert.FromBase64String(request.Imagem);
-                }
-
+                var imagemBytes = string.IsNullOrEmpty(request.Imagem) ? Array.Empty<byte>() : Convert.FromBase64String(request.Imagem);
                 var produto = Produto.CriarNovoProduto(request.Nome ?? Constantes.ErroProdutoSemNome, request.Preco, imagemBytes);
 
                 _context.Produtos.Add(produto);
@@ -83,15 +78,11 @@ namespace WEB_API.Controllers
             }
             catch (ArgumentException ex)
             {
-                _logger.LogError(ex, Constantes.ErroCriarNovoProduto);
-                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
                 return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, Constantes.ErroCriarNovoProduto);
-                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
-                return StatusCode(500, Constantes.ErroInternoRequisicao);
+                return await HandleGenericError(ex, Constantes.ErroCriarNovoProduto);
             }
         }
 
@@ -117,12 +108,7 @@ namespace WEB_API.Controllers
                     return NotFound();
                 }
 
-                var imagemBytes = Array.Empty<byte>();
-                if (!string.IsNullOrEmpty(request.Imagem))
-                {
-                    imagemBytes = Convert.FromBase64String(request.Imagem);
-                }
-
+                var imagemBytes = string.IsNullOrEmpty(request.Imagem) ? Array.Empty<byte>() : Convert.FromBase64String(request.Imagem);
                 var produtoAtualizado = Produto.CriarProdutoExistente(id, request.Nome ?? Constantes.ErroProdutoSemNome, request.Preco, imagemBytes);
 
                 _context.Entry(produtoExistente).CurrentValues.SetValues(produtoAtualizado);
@@ -132,8 +118,6 @@ namespace WEB_API.Controllers
             }
             catch (ArgumentException ex)
             {
-                _logger.LogError(ex, Funcoes.ObterMensagemErroAtualizarProduto(id));
-                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
                 return BadRequest(ex.Message);
             }
             catch (DbUpdateConcurrencyException)
@@ -149,9 +133,7 @@ namespace WEB_API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, Funcoes.ObterMensagemErroAtualizarProduto(id));
-                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
-                return StatusCode(500, Constantes.ErroInternoRequisicao);
+                return await HandleGenericError(ex, Funcoes.ObterMensagemErroAtualizarProduto(id), id);
             }
 
             return NoContent();
@@ -176,10 +158,23 @@ namespace WEB_API.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, Funcoes.ObterMensagemErroDeletarProduto(id));
-                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
-                return StatusCode(500, Constantes.ErroInternoRequisicao);
+                return await HandleGenericError(ex, Funcoes.ObterMensagemErroDeletarProduto(id), id);
             }
+        }
+
+        private async Task<ActionResult> HandleProdutoNaoEncontrado(int id)
+        {
+            var erro = new Exception(Constantes.ProdutoNaoEncontrado);
+            _logger.LogError(erro, Funcoes.ObterMensagemErroObterProduto(id), id);
+            await _logErroService.LogErroAsync(erro, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
+            return NotFound(new { id = id, Mensagem = Constantes.ProdutoNaoEncontrado });
+        }
+
+        private async Task<ActionResult> HandleGenericError(Exception ex, string mensagemErro, int? id = null)
+        {
+            _logger.LogError(ex, mensagemErro, id?.ToString() ?? "null");
+            await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
+            return StatusCode(500, Constantes.ErroInternoRequisicao);
         }
 
         private bool ProdutoExists(int id)

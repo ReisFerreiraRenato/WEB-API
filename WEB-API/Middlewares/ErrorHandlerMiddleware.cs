@@ -1,6 +1,12 @@
-﻿using System.Net;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Net;
 using System.Text.Json;
+using System.Threading.Tasks;
 using WEB_API.Services;
+using WEB_API.Utils;
 
 namespace WEB_API.Middlewares
 {
@@ -25,38 +31,57 @@ namespace WEB_API.Middlewares
         private async Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            HttpStatusCode statusCode;
+            string mensagemErro;
 
-            _logger.LogError(ex, "Erro não tratado: {Message}", ex.Message);
+            // Tratamento específico para DbUpdateException
+            if (ex is DbUpdateException dbUpdateEx)
+            {
+                statusCode = HttpStatusCode.InternalServerError;
+                mensagemErro = "Erro ao atualizar o banco de dados.";
 
-            string enderecoRequisicao = $"{context.Request.Scheme}://{context.Request.Host}{context.Request.Path}{context.Request.QueryString}";
-            string metodoRequisicao = context.Request.Method;
-            string corpoRequisicao = "";
+                // Log mais detalhado para DbUpdateException
+                _logger.LogError(dbUpdateEx, "Erro ao atualizar o banco de dados: {Message}", dbUpdateEx.Message);
+                using (var scope = _serviceScopeFactory.CreateScope())
+                {
+                    var logErroService = scope.ServiceProvider.GetRequiredService<ILogErroService>();
+                    await logErroService.LogErroAsync(dbUpdateEx, context.Request.Path, context.Request.Method, await ObterCorpoRequisicao(context), nameof(ErrorHandlerMiddleware));
+                }
+            }
+            // Outros tipos de exceções
+            else
+            {
+                statusCode = HttpStatusCode.InternalServerError;
+                mensagemErro = "Ocorreu um erro interno no servidor.";
 
+                // Log para outras exceções
+                _logger.LogError(ex, "Erro não tratado: {Message}", ex.Message);
+                using (var scope = _serviceScopeFactory.CreateScope())
+                {
+                    var logErroService = scope.ServiceProvider.GetRequiredService<ILogErroService>();
+                    await logErroService.LogErroAsync(ex, context.Request.Path, context.Request.Method, await ObterCorpoRequisicao(context), nameof(ErrorHandlerMiddleware));
+                }
+            }
+
+            context.Response.StatusCode = (int)statusCode;
+            var response = new { mensagem = mensagemErro };
+            var json = JsonSerializer.Serialize(response);
+
+            await context.Response.WriteAsync(json);
+        }
+
+        private async Task<string> ObterCorpoRequisicao(HttpContext context)
+        {
             if (context.Request.ContentLength > 0)
             {
                 context.Request.EnableBuffering();
                 context.Request.Body.Position = 0;
-                using (var reader = new System.IO.StreamReader(context.Request.Body))
-                {
-                    corpoRequisicao = await reader.ReadToEndAsync();
-                }
+                using var reader = new System.IO.StreamReader(context.Request.Body);
+                var corpoRequisicao = await reader.ReadToEndAsync();
                 context.Request.Body.Position = 0;
+                return corpoRequisicao;
             }
-
-            // Cria um escopo para o serviço scoped
-            using (var scope = _serviceScopeFactory.CreateScope())
-            {
-                var logErroService = scope.ServiceProvider.GetRequiredService<ILogErroService>();
-
-                // Registre o erro no banco de dados
-                await logErroService.LogErroAsync(ex, enderecoRequisicao, metodoRequisicao, corpoRequisicao, nameof(ErrorHandlerMiddleware));
-            }
-
-            var response = new { message = "Ocorreu um erro interno no servidor." };
-            var json = JsonSerializer.Serialize(response);
-
-            await context.Response.WriteAsync(json);
+            return string.Empty;
         }
     }
 

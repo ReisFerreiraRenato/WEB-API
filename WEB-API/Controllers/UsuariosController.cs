@@ -6,7 +6,8 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-using Microsoft.Extensions.Configuration;
+using WEB_API.Services;
+using WEB_API.Utils; 
 
 namespace WEB_API.Controllers
 {
@@ -16,25 +17,35 @@ namespace WEB_API.Controllers
     {
         private readonly ProdutosUsuariosContext _context;
         private readonly IConfiguration _configuration;
+        private readonly ILogErroService _logErroService;
 
-        public UsuariosController(ProdutosUsuariosContext context, IConfiguration configuration) // Modifique o construtor
+        public UsuariosController(ProdutosUsuariosContext context, IConfiguration configuration, ILogErroService logErroService)
         {
             _context = context;
-            _configuration = configuration; 
+            _configuration = configuration;
+            _logErroService = logErroService;
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(LoginRequest request)
+        public async Task<IActionResult> Login(LoginRequest request)
         {
-            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == request.Email);
-
-            if (usuario == null || !BCrypt.Net.BCrypt.Verify(request.Senha, usuario.Senha))
+            try
             {
-                return Unauthorized("Credenciais inválidas.");
-            }
+                var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == request.Email);
 
-            var token = GenerateJwtToken(usuario);
-            return Ok(token);
+                if (usuario == null || !BCrypt.Net.BCrypt.Verify(request.Senha, usuario.Senha))
+                {
+                    return Unauthorized(new { mensagem = Constantes.ErroLoginCredenciaisInvalidas, login = false });
+                }
+
+                var token = GenerateJwtToken(usuario);
+                return Ok(new { mensagem = Constantes.LoginRealizadoSucesso, login = true, token = token });
+            }
+            catch (Exception ex)
+            {
+                _logErroService.LogErroAsync(ex, Request.Path, Request.Method, "", nameof(UsuariosController));
+                return StatusCode(500, new { mensagem = Constantes.ErroLogin, login = false });
+            }
         }
 
         private string GenerateJwtToken(Usuario usuario)
@@ -45,9 +56,9 @@ namespace WEB_API.Controllers
             {
                 Subject = new ClaimsIdentity(
                 [
-                    new(ClaimTypes.Name, usuario.Email ?? "email_desconhecido")
+                    new(ClaimTypes.Name, usuario.Email ?? Constantes.EmailDesconhecido)
                 ]),
-                Expires = DateTime.UtcNow.AddHours(24), // Token expira em 24 horas
+                Expires = DateTime.UtcNow.AddHours(24),
                 Issuer = jwtSettings["Issuer"],
                 Audience = jwtSettings["Audience"],
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(secretKey), SecurityAlgorithms.HmacSha256Signature)
@@ -62,11 +73,6 @@ namespace WEB_API.Controllers
         {
             public string? Email { get; set; }
             public string? Senha { get; set; }
-        }
-
-        public class TokenResponse
-        {
-            public string? Token { get; set; }
         }
     }
 }

@@ -1,0 +1,11 @@
+# ignora os arquivos com extensões 
+# ignora quaisquer diretórios chamados "metadata"
+WEB-API/.vs/
+.bin/
+.Debug/
+bin/
+WEB-API/bin/
+WEB-API/obj/Debug/
+.WEB-API/bin/Debug/net8.0/
+*.nupkg
+*.user
