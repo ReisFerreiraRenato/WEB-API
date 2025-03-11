@@ -1,8 +1,8 @@
 # ignora os arquivos com extensões 
 # ignora quaisquer diretórios chamados "metadata"
 WEB-API/.vs/
-.bin/
-.Debug/
+WEB-API/bin/
+WEB-API/Debug/
 bin/
 WEB-API/bin/
 WEB-API/obj/Debug/
