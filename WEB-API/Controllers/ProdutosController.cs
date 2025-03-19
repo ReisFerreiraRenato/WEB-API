@@ -32,7 +32,7 @@ namespace WEB_API.Controllers
         }
 
         // GET: api/Produtos/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = Constantes.GetProduto)]
         public async Task<ActionResult<Produto>> GetProduto(int id)
         {
             try
@@ -63,18 +63,39 @@ namespace WEB_API.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return StatusCode(406, ModelState);
+                return new ObjectResult(ModelState) { StatusCode = 406 };
             }
 
             try
             {
-                var imagemBytes = string.IsNullOrEmpty(request.Imagem) ? Array.Empty<byte>() : Convert.FromBase64String(request.Imagem);
-                var produto = Produto.CriarNovoProduto(request.Nome ?? Constantes.ErroProdutoSemNome, request.Preco, imagemBytes);
-
+                var produto = Produto.CriarNovoProduto(request.Nome, request.Preco, Convert.FromBase64String(request.Imagem));
                 _context.Produtos.Add(produto);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction(Constantes.GetProduto, new { id = produto.Id }, produto);
+                return CreatedAtAction("GetProduto", new { id = produto.Id }, produto);
+            }
+            catch (DbUpdateException ex) when (ex.InnerException is Microsoft.Data.Sqlite.SqliteException sqliteException && sqliteException.SqliteErrorCode == 19)
+            {
+                _logger.LogError(sqliteException, "SqliteException com SqliteErrorCode 19 capturada"); // Log de depuração
+                return Conflict("Produto com o mesmo ID já existe.");
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, "DbUpdateException capturada");
+                if (ex.InnerException != null)
+                {
+                    _logger.LogError(ex.InnerException, "InnerException não é nulo");
+                    _logger.LogError(ex.InnerException, "Tipo da InnerException: {InnerExceptionType}", ex.InnerException.GetType().FullName);
+                    if (ex.InnerException is Microsoft.Data.Sqlite.SqliteException sqliteException)
+                    {
+                        _logger.LogError(sqliteException, "SqliteException capturada");
+                        _logger.LogError(sqliteException, "SqliteErrorCode: {SqliteErrorCode}", sqliteException.SqliteErrorCode);
+                    }
+                }
+
+                _logger.LogError(ex, "Erro ao criar produto");
+                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, Request.Body.ToString(), nameof(ProdutosController));
+                return new ObjectResult("Erro interno do servidor") { StatusCode = 500 };
             }
             catch (ArgumentException ex)
             {
@@ -82,7 +103,9 @@ namespace WEB_API.Controllers
             }
             catch (Exception ex)
             {
-                return await HandleGenericError(ex, Constantes.ErroCriarNovoProduto);
+                _logger.LogError(ex, "Erro ao criar produto");
+                await _logErroService.LogErroAsync(ex, Request.Path, Request.Method, Request.Body.ToString(), nameof(ProdutosController));
+                return new ObjectResult("Erro interno do servidor") { StatusCode = 500 };
             }
         }
 
@@ -122,14 +145,7 @@ namespace WEB_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProdutoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
             catch (Exception ex)
             {
@@ -167,7 +183,7 @@ namespace WEB_API.Controllers
             var erro = new Exception(Constantes.ProdutoNaoEncontrado);
             _logger.LogError(erro, Funcoes.ObterMensagemErroObterProduto(id), id);
             await _logErroService.LogErroAsync(erro, Request.Path, Request.Method, await ObterCorpoRequisicao(), nameof(ProdutosController));
-            return NotFound(new { id = id, Mensagem = Constantes.ProdutoNaoEncontrado });
+            return NotFound(new { id, Mensagem = Constantes.ProdutoNaoEncontrado });
         }
 
         private async Task<ActionResult> HandleGenericError(Exception ex, string mensagemErro, int? id = null)
@@ -184,7 +200,7 @@ namespace WEB_API.Controllers
 
         private async Task<string> ObterCorpoRequisicao()
         {
-            if (Request.ContentLength > 0)
+            if (Request?.ContentLength > 0)
             {
                 Request.EnableBuffering();
                 Request.Body.Position = 0;

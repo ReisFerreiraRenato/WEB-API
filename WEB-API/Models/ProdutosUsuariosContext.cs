@@ -10,7 +10,7 @@ namespace WEB_API.Models
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Produto> Produtos { get; set; }
+        public virtual DbSet<Produto> Produtos { get; set; }
         public DbSet<LogErro> LogsErros { get; set; }
     }
 }

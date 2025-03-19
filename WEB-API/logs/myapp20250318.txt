@@ -1,0 +1,93 @@
+2025-03-18 14:28:32.315 -03:00 [INF] User profile is available. Using 'C:\Users\Renato\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-18 14:28:34.163 -03:00 [INF] Now listening on: https://localhost:7127
+2025-03-18 14:28:34.166 -03:00 [INF] Now listening on: http://localhost:5120
+2025-03-18 14:28:34.817 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-18 14:28:34.943 -03:00 [INF] Hosting environment: Development
+2025-03-18 14:28:35.051 -03:00 [INF] Content root path: D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API
+2025-03-18 14:28:57.461 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7127/weatherforecast - null null
+2025-03-18 14:29:01.761 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-18 14:29:02.805 -03:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[WEB_API.WeatherForecast] Get() on controller WEB_API.Controllers.WeatherForecastController (WEB-API).
+2025-03-18 14:29:02.897 -03:00 [INF] Executing ObjectResult, writing value of type 'WEB_API.WeatherForecast[]'.
+2025-03-18 14:29:02.946 -03:00 [INF] Executed action WEB_API.Controllers.WeatherForecastController.Get (WEB-API) in 76.5534ms
+2025-03-18 14:29:02.950 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-18 14:29:02.959 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7127/weatherforecast - 200 null application/json; charset=utf-8 5554.6775ms
+2025-03-18 14:29:03.157 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7127/favicon.ico - null null
+2025-03-18 14:29:03.171 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7127/favicon.ico - 404 0 null 14.1212ms
+2025-03-18 14:29:03.187 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7127/favicon.ico, Response status code: 404
+2025-03-18 14:29:07.998 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7127/api/produtos/00 - null null
+2025-03-18 14:29:09.308 -03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '12/03/2025 14:40:34', Current time (UTC): '18/03/2025 17:29:09'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-03-18 14:29:09.377 -03:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '12/03/2025 14:40:34', Current time (UTC): '18/03/2025 17:29:09'.
+2025-03-18 14:29:09.383 -03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-03-18 14:29:09.391 -03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-03-18 14:29:09.407 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7127/api/produtos/00 - 401 0 null 1409.3576ms
+2025-03-18 14:29:18.955 -03:00 [INF] Request starting HTTP/1.1 POST https://localhost:7127/api/Usuarios/login - application/json 57
+2025-03-18 14:29:18.960 -03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+ ---> Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(String encodedJson)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+   --- End of inner exception stack trace ---
+2025-03-18 14:29:18.965 -03:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2025-03-18 14:29:18.967 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.UsuariosController.Login (WEB-API)'
+2025-03-18 14:29:19.053 -03:00 [INF] Route matched with {action = "Login", controller = "Usuarios"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequest) on controller WEB_API.Controllers.UsuariosController (WEB-API).
+2025-03-18 14:29:28.035 -03:00 [INF] Executed DbCommand (187ms) [Parameters=[@__request_Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[ID], [u].[Email], [u].[Senha]
+FROM [Usuarios] AS [u]
+WHERE [u].[Email] = @__request_Email_0
+2025-03-18 14:29:28.730 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType3`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-18 14:29:28.762 -03:00 [INF] Executed action WEB_API.Controllers.UsuariosController.Login (WEB-API) in 9705.3742ms
+2025-03-18 14:29:28.765 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.UsuariosController.Login (WEB-API)'
+2025-03-18 14:29:28.777 -03:00 [INF] Request finished HTTP/1.1 POST https://localhost:7127/api/Usuarios/login - 200 null application/json; charset=utf-8 9822.3911ms
+2025-03-18 14:29:42.926 -03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7127/api/produtos/00 - null null
+2025-03-18 14:29:42.946 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.ProdutosController.GetProduto (WEB-API)'
+2025-03-18 14:29:42.978 -03:00 [INF] Route matched with {action = "GetProduto", controller = "Produtos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[WEB_API.Models.Produto]] GetProduto(Int32) on controller WEB_API.Controllers.ProdutosController (WEB-API).
+2025-03-18 14:29:43.014 -03:00 [ERR] Erro ao obter o produto com ID 0.
+System.Exception: Produto não encontrado
+2025-03-18 14:29:43.387 -03:00 [INF] Executed DbCommand (90ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [LogsErros] ([CorpoRequisicao], [DataHora], [EnderecoRequisicao], [Mensagem], [MetodoRequisicao], [NomeControlador], [StackTrace])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-03-18 14:29:43.430 -03:00 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType1`2[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-18 14:29:43.435 -03:00 [INF] Executed action WEB_API.Controllers.ProdutosController.GetProduto (WEB-API) in 453.7885ms
+2025-03-18 14:29:43.437 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.ProdutosController.GetProduto (WEB-API)'
+2025-03-18 14:29:43.439 -03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7127/api/produtos/00 - 404 null application/json; charset=utf-8 512.6938ms
+2025-03-18 15:15:12.131 -03:00 [INF] User profile is available. Using 'C:\Users\Renato\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-18 15:15:12.401 -03:00 [INF] Now listening on: https://localhost:7127
+2025-03-18 15:15:12.404 -03:00 [INF] Now listening on: http://localhost:5120
+2025-03-18 15:15:12.536 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-18 15:15:12.538 -03:00 [INF] Hosting environment: Development
+2025-03-18 15:15:12.540 -03:00 [INF] Content root path: D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API
+2025-03-18 15:15:15.661 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7127/weatherforecast - null null
+2025-03-18 15:15:17.391 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-18 15:15:17.411 -03:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[WEB_API.WeatherForecast] Get() on controller WEB_API.Controllers.WeatherForecastController (WEB-API).
+2025-03-18 15:15:17.425 -03:00 [INF] Executing ObjectResult, writing value of type 'WEB_API.WeatherForecast[]'.
+2025-03-18 15:15:17.450 -03:00 [INF] Executed action WEB_API.Controllers.WeatherForecastController.Get (WEB-API) in 28.3473ms
+2025-03-18 15:15:17.454 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-18 15:15:17.458 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7127/weatherforecast - 200 null application/json; charset=utf-8 1805.6371ms
+2025-03-18 15:15:17.557 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7127/favicon.ico - null null
+2025-03-18 15:15:17.567 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7127/favicon.ico - 404 0 null 9.9323ms
+2025-03-18 15:15:17.582 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7127/favicon.ico, Response status code: 404
+2025-03-18 15:36:52.167 -03:00 [INF] User profile is available. Using 'C:\Users\Renato\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-18 15:36:52.506 -03:00 [INF] Now listening on: https://localhost:7127
+2025-03-18 15:36:52.508 -03:00 [INF] Now listening on: http://localhost:5120
+2025-03-18 15:36:52.679 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-18 15:36:52.682 -03:00 [INF] Hosting environment: Development
+2025-03-18 15:36:52.684 -03:00 [INF] Content root path: D:\Projetos\APS.NET\WEB API\WEB-API\WEB-API
+2025-03-18 15:36:53.614 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7127/weatherforecast - null null
+2025-03-18 15:36:53.898 -03:00 [INF] Executing endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-18 15:36:53.924 -03:00 [INF] Route matched with {action = "Get", controller = "WeatherForecast"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[WEB_API.WeatherForecast] Get() on controller WEB_API.Controllers.WeatherForecastController (WEB-API).
+2025-03-18 15:36:53.941 -03:00 [INF] Executing ObjectResult, writing value of type 'WEB_API.WeatherForecast[]'.
+2025-03-18 15:36:53.978 -03:00 [INF] Executed action WEB_API.Controllers.WeatherForecastController.Get (WEB-API) in 46.1365ms
+2025-03-18 15:36:53.991 -03:00 [INF] Executed endpoint 'WEB_API.Controllers.WeatherForecastController.Get (WEB-API)'
+2025-03-18 15:36:54.001 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7127/weatherforecast - 200 null application/json; charset=utf-8 406.1858ms

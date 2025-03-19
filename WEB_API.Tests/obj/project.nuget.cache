@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0lNG3h1RmcQ=",
+  "dgSpecHash": "uxepM3n1Hrs=",
   "success": true,
   "projectFilePath": "D:\\Projetos\\APS.NET\\WEB API\\WEB-API\\WEB_API.Tests\\WEB_API.Tests.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,8 @@
     "C:\\Users\\Renato\\.nuget\\packages\\microsoft.codecoverage\\17.13.0\\microsoft.codecoverage.17.13.0.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.6\\microsoft.data.sqlclient.5.1.6.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.1.1\\microsoft.data.sqlclient.sni.runtime.5.1.1.nupkg.sha512",
+    "C:\\Users\\Renato\\.nuget\\packages\\microsoft.data.sqlite\\9.0.3\\microsoft.data.sqlite.9.0.3.nupkg.sha512",
+    "C:\\Users\\Renato\\.nuget\\packages\\microsoft.data.sqlite.core\\9.0.3\\microsoft.data.sqlite.core.9.0.3.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.2\\microsoft.entityframeworkcore.9.0.2.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.2\\microsoft.entityframeworkcore.abstractions.9.0.2.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.2\\microsoft.entityframeworkcore.analyzers.9.0.2.nupkg.sha512",
@@ -61,6 +63,10 @@
     "C:\\Users\\Renato\\.nuget\\packages\\serilog.sinks.console\\6.0.0\\serilog.sinks.console.6.0.0.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\serilog.sinks.debug\\3.0.0\\serilog.sinks.debug.3.0.0.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\serilog.sinks.file\\6.0.0\\serilog.sinks.file.6.0.0.nupkg.sha512",
+    "C:\\Users\\Renato\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.10\\sqlitepclraw.bundle_e_sqlite3.2.1.10.nupkg.sha512",
+    "C:\\Users\\Renato\\.nuget\\packages\\sqlitepclraw.core\\2.1.10\\sqlitepclraw.core.2.1.10.nupkg.sha512",
+    "C:\\Users\\Renato\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.10\\sqlitepclraw.lib.e_sqlite3.2.1.10.nupkg.sha512",
+    "C:\\Users\\Renato\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.10\\sqlitepclraw.provider.e_sqlite3.2.1.10.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\swashbuckle.aspnetcore\\7.3.1\\swashbuckle.aspnetcore.7.3.1.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\7.3.1\\swashbuckle.aspnetcore.swagger.7.3.1.nupkg.sha512",
     "C:\\Users\\Renato\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\7.3.1\\swashbuckle.aspnetcore.swaggergen.7.3.1.nupkg.sha512",
